@@ -10,7 +10,7 @@ function App() {
       <div className="App">
         <div className="container">
           <Header />
-
+        <p>I dont know what to add, so this is a place holder.</p>
         <Route path="/About" component={About} />
         </div>
       </div>

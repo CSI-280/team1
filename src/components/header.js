@@ -5,7 +5,8 @@ function Header() {
     return (
         <header style={headerStyle}>
             <h1>Pet Finder</h1>
-            <Link style={linkStyle} to="/">Home | </Link>
+            <Link style={linkStyle} to="/">Home</Link>
+            <span> | </span>
             <Link style={linkStyle} to="/about">About</Link>
         </header>
     )
@@ -19,7 +20,7 @@ const headerStyle = {
 }
 
 const linkStyle = {
-    color: '#ffffff',
+    color: '#fff',
     textDecoration: 'none',
     textAlign: 'center'
 }
