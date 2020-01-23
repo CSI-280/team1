@@ -25,7 +25,7 @@ Git Clone the link you got from Github.
 
 I wasn't able to Ctrl+V into Git Bash, just right click in Git Bash to paste.</p>
 
-<p style="text-align: center"><img src="file:///Pictures/GitBashClone.PNG" alt="Github Copy Clone"></p>
+<p style="text-align: center"><img src="/Pictures/GitBashClone.PNG" alt="Git Bash"></p>
 
 ***
 
