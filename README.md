@@ -11,9 +11,9 @@
 
 <h1 style="text-align: center">Clone the Repo</h1>
 
-<p style="text-align: center"><img src="file:///Pictures/Clone.PNG" alt="Github Copy Clone"></p>
+<p style="text-align: center"><img src="/Pictures/Clone.PNG" alt="Github Copy Clone"></p>
 
-<p style="text-align: center"><img src="file:///Pictures/Clone2.PNG" alt="Github Copy Clone"></p>
+<p style="text-align: center"><img src="/Pictures/Clone2.PNG" alt="Github"></p>
 
 <p style="font-size: 20px">You can also just copy the link in the picture above.
 
