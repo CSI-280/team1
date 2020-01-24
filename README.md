@@ -1,55 +1,55 @@
-<h1 style="text-align: center">Setup</h1>
+# Setup
 
 ***
 
-<h1 style="text-align: center">Get Git Bash</h1>
+# Get Git Bash
 
-<p style="font-size: 20px">If you don't already have it get Git Bash from the <a href="https://gitforwindows.org/">link</a>.</p>
-
-***
-
-
-<h1 style="text-align: center">Clone the Repo</h1>
-
-<p style="text-align: center"><img src="/Pictures/Clone.PNG" alt="Github Copy Clone"></p>
-
-<p style="text-align: center"><img src="/Pictures/Clone2.PNG" alt="Github"></p>
-
-<p style="font-size: 20px">You can also just copy the link in the picture above.
-
-Open Git Bash.
-
-Cd to where you want the repo to go.
-
-Git Clone the link you got from Github.
-
-I wasn't able to Ctrl+V into Git Bash, just right click in Git Bash to paste.</p>
-
-<p style="text-align: center"><img src="/Pictures/GitBashClone.PNG" alt="Git Bash"></p>
+If you don't already have it get Git Bash from the <a href="https://gitforwindows.org/">link</a>.
 
 ***
 
-<h1 style="text-align: center">Download Node.js</h1>
 
-<p style="font-size: 20px">Download Node.js at this <a href="https://nodejs.org/en/">link</a>.</p>
+# Clone the Repo
+
+<img src="/Pictures/Clone.PNG" alt="Github Copy Clone">
+
+<img src="/Pictures/Clone2.PNG" alt="Github">
+
+You can also just copy the link in the picture above.
+
+1. Open Git Bash.
+
+2. Cd to where you want the repo to go.
+
+3. Git Clone the link you got from Github.
+
+I wasn't able to Ctrl+V into Git Bash, just right click in Git Bash to paste.
+
+<img src="/Pictures/GitBashClone.PNG" alt="Git Bash">
 
 ***
 
-<h1 style="text-align: center">Start the React App</h1>
+# Download Node.js
 
-<p style="font-size: 20px">Open cmd.
+Download Node.js at this <a href="https://nodejs.org/en/">link</a>.
 
-If it is your first install you might need to run the command **npm install -g create-react-app**. 
+***
 
-run the command **cd _repo path_**. 
+# Start the React App 
+
+1. Open cmd.
+
+2. If it is your first install you might need to run the command **npm install -g create-react-app**. 
+
+3. Run the command **cd _repo path_**. 
 
 **repo path** is where ever you cloned the repo.
 
-run the command **npm install**. Only once.
+4. Run the command **npm install**. Only once.
 
-you might also need to run **npm install react-router-dom**. Only once.
+5. You might also need to run **npm install react-router-dom**. Only once.
 
-run the command **npm start**.
+6. Run the command **npm start**.
 
 This should open a browser to localhost:3000.
 
@@ -57,5 +57,5 @@ If you close this tab you can just type localhost:3000 into the browser
 
 In /src/components is where the files of the site are.
 
-Use whatever text editor you like.</p>
+Use whatever text editor you like.
 
