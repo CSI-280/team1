@@ -1,10 +1,14 @@
 import React from 'react';
-import Test from '../testCall.js'
 import dog from './../images/dog.jpg';
+import pf from '../pf.js';
 
 function Home() {
+    console.log("starting search");
+    pf.animal.search({type: "Dog"})
+    .then(resp =>{
+        console.log(resp.data.animal)
+    });
     return (
-        //<Test />
         <img src={dog} alt="this is a dog" />
     )
 }
