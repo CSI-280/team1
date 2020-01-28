@@ -4,8 +4,7 @@ import pf from '../pf.js';
 
 function Home() {
     var img;
-   // pf.animal.search({type: "Dog"})
-    pf.animal.search({age: "baby", gender: "female", status: "adoptable"})
+    pf.animal.search({type: "Dog"})
     .then(resp =>{
         console.log("starting search...");
         console.log("Search results", resp.data.animals)
