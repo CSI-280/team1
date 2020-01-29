@@ -31,12 +31,9 @@ function getImg()
         {
             img=miss;
         }
-    })
-    /*once the api search is done*/
-    .then(() => {
-        /*return img*/
+
         console.log(img);
-        return img;
+        return img
     })
 };
 
@@ -45,7 +42,7 @@ function About() {
         <React.Fragment>
             <h1>About</h1>
             <p>This dog is adoptable</p>
-            <img src={getImg()} alt="adoptable dog" />
+            <img src={getImg()} alt="Adoptable Dog" />
             </React.Fragment>
     )
 }
