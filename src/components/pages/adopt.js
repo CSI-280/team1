@@ -6,6 +6,7 @@ function Adopt() {
         <React.Fragment>
             <Pet index="0"/>
             <Pet index="1"/>
+            <Pet index="2" />
         </React.Fragment>
     )
 }

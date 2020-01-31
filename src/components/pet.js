@@ -15,7 +15,6 @@ class Pet extends React.Component {
             age: "age",
             breed: "breed",
             link: "link",
-            index: 0
         }
 
         //call function
@@ -33,26 +32,26 @@ class Pet extends React.Component {
         .then(resp =>{
 
             /* output photots array to console for testing */
-            console.log(resp.data.animals[this.state.index]);
+            console.log(resp.data.animals[this.props.index]);
             
             //set variables 
             this.setState({
-                name: resp.data.animals[this.state.index].name, 
-                gender: resp.data.animals[this.state.index].gender, 
-                age: resp.data.animals[this.state.index].age,
-                breed: resp.data.animals[this.state.index].breeds.primary,
-                link: resp.data.animals[this.state.index].url
+                name: resp.data.animals[this.props.index].name, 
+                gender: resp.data.animals[this.props.index].gender, 
+                age: resp.data.animals[this.props.index].age,
+                breed: resp.data.animals[this.props.index].breeds.primary,
+                link: resp.data.animals[this.props.index].url
             })
 
             /* get length of photos array */
-            len=resp.data.animals[this.state.index].photos.length;
+            len=resp.data.animals[this.props.index].photos.length;
 
             /*if length > 1 get img*/
             if (len > 0)
             {
                 //set image variable
                 this.setState({
-                    image: resp.data.animals[this.state.index].photos[0].medium
+                    image: resp.data.animals[this.props.index].photos[0].medium
                 })
             }
         })
