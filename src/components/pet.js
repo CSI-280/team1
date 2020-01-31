@@ -4,9 +4,11 @@ import pf from './pf.js';
 
 class Pet extends React.Component {
     
+    //constructor
     constructor(props) {
         super(props);
         this.state = {
+            //set defaults
             image: miss,
             name: "name", 
             gender: "gender", 
@@ -16,6 +18,7 @@ class Pet extends React.Component {
             index: 0
         }
 
+        //call function
         this.getImage();
     }
 
@@ -31,7 +34,8 @@ class Pet extends React.Component {
 
             /* output photots array to console for testing */
             console.log(resp.data.animals[this.state.index]);
-
+            
+            //set variables 
             this.setState({
                 name: resp.data.animals[this.state.index].name, 
                 gender: resp.data.animals[this.state.index].gender, 
@@ -46,6 +50,7 @@ class Pet extends React.Component {
             /*if length > 1 get img*/
             if (len > 0)
             {
+                //set image variable
                 this.setState({
                     image: resp.data.animals[this.state.index].photos[0].medium
                 })
