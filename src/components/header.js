@@ -8,6 +8,8 @@ function Header() {
             <Link style={linkStyle} to="/">Home</Link>
             <span> | </span>
             <Link style={linkStyle} to="/about">About</Link>
+            <span> | </span>
+            <Link style={linkStyle} to="/adopt">Adopt</Link>
         </header>
     )
 }
