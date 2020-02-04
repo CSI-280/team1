@@ -1,6 +1,7 @@
 import React from 'react';
 import miss from './images/no-Photo.jpg';
 import pf from './pf.js';
+import './styles/adoptStyle.css';
 
 class Pet extends React.Component {
     
@@ -10,11 +11,11 @@ class Pet extends React.Component {
         this.state = {
             //set defaults
             image: miss,
-            name: "name", 
-            gender: "gender", 
-            age: "age",
-            breed: "breed",
-            link: "link",
+            name: "Loading...", 
+            gender: "Loading...", 
+            age: "Loading...",
+            breed: "Loading...",
+            link: "Loading...",
         }
 
         //call function
@@ -59,15 +60,11 @@ class Pet extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>About</h1>
-                <p>This dog is adoptable</p>
-                <img src={this.state.image} alt="Adoptable Dog" width="300" height="400"/>
-                <p>Name: {this.state.name}</p>
-                <p>Gender: {this.state.gender}</p>
-                <p>Age: {this.state.age}</p>
-                <p>Breed: {this.state.breed}</p>
-                <p><a href={this.state.link} target="_blank">Adopt Me!</a></p>
+            <div className="col" onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
+                <a href={this.state.link} target="_blank" rel="noopener"></a>
+                <h3>{this.state.name} is adoptable</h3>
+                <img src={this.state.image} alt="Adoptable Dog" width="400" height="500"/>
+                <p>{this.state.age} {this.state.gender} {this.state.breed}</p>
             </div>
         )
     }
