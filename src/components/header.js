@@ -7,7 +7,10 @@ function Header() {
             <h1>Pet Finder</h1>
             <Link style={linkStyle} to="/">Home</Link>
             <span> | </span>
+            <Link style={linkStyle} to="/randomPet">Random Pet</Link>
+            <span> | </span>
             <Link style={linkStyle} to="/about">About</Link>
+            
         </header>
     )
 }
