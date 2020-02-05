@@ -3,11 +3,14 @@ import RandPet from '../randPet';
 
 function randomPet() {
     return (
-        <React.Fragment>
+        <div style={pageStyle}>
              <RandPet index="0"/>
-        </React.Fragment>
+        </div>
     )
 }
-
-
+const pageStyle = {
+    width: '100%',
+    height: '100%',
+    padding: '0px',
+}
 export default randomPet

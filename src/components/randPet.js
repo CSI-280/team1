@@ -17,16 +17,18 @@ class RandomPet extends React.Component {
             breed: "Loading...",
             link: "Loading...",
             type: "",
-        }
-        let display = false;
+            display: false,
+            prevType: ""
+        };
     }
 
     handleClick = () => {
         this.display = true;
         this.genRand();
+        this.setState({image: miss});
     };
 
-    /*get an image from the API*/
+    /*gets random animal*/
     genRand()
     {
         //holds all types of animals
@@ -41,8 +43,12 @@ class RandomPet extends React.Component {
             /* declare variables */
             let len;
             //gets random type
-            var type = types[Math.floor(Math.random() * types.length)];
-            console.log(type);
+            do {
+                var type = types[Math.floor(Math.random() * types.length)];
+                console.log(this.props.prevType);
+                console.log(type);
+                
+            } while(type == this.props.prevType);
             /*API Search*/
             pf.animal.search({type: type})
             .then(resp =>{                
@@ -53,8 +59,9 @@ class RandomPet extends React.Component {
                     age: resp.data.animals[this.props.index].age,
                     breed: resp.data.animals[this.props.index].breeds.primary,
                     link: resp.data.animals[this.props.index].url,
-                    type: resp.data.animals[this.props.index].type
+                    type: resp.data.animals[this.props.index].type,
                 })
+                this.prevType = this.props.type;
 
                 /* get length of photos array */
                 len=resp.data.animals[this.props.index].photos.length;
@@ -79,12 +86,10 @@ class RandomPet extends React.Component {
         if (disp) {
             content = 
             <React.Fragment>
-                <h1>{this.state.name}</h1>
-                <h3>{this.state.type}</h3>
-                <h3>{this.state.gender}</h3>
-                <h3>{this.state.age}</h3>
-                <h3>{this.state.breed}</h3>
-                <img src = {this.state.image} alt={this.state.type}/>
+                <h1 style={nameStyle} onClick={() => window.open(this.state.link)}>{this.state.name}</h1>
+                <h3 style={infoStyle}>{this.state.type} - {this.state.breed}</h3>
+                <h3 style={infoStyle}>{this.state.gender} - {this.state.age}</h3>
+                <img style={imgStyle} src = {this.state.image} alt={this.state.type} onClick={() => window.open(this.state.link)}/>
             </React.Fragment>;
         }
 
@@ -97,23 +102,28 @@ class RandomPet extends React.Component {
     }
 }
 
+
+const nameStyle = {
+}
+
+const infoStyle = {
+}
+
+
+const imgStyle = {
+    width: '30%',
+    height: "auto",
+    borderRadius: '7%',
+}
+
 const buttonStyle = {
-    color: '#8700FF',
+    width: '10%',
+    height: 'auto',
+    color: '#9A80B9 ',
+    backgroundColor: '#333',
     textAlign: 'center',
+    borderRadius: '15px',
+    border: 'none',
 }
 
 export default RandomPet;
-
-
-
-// <React.Fragment>
-//                  <button style={buttonStyle} onClick={this.handleClick}>Generate random pet</button>
-//                  <React.Fragment>
-//                     <h1>{this.state.name}</h1>
-//                     <h3>{this.state.type}</h3>
-//                     <h3>{this.state.gender}</h3>
-//                     <h3>{this.state.age}</h3>
-//                     <h3>{this.state.breed}</h3>
-//                     <img src = {this.state.image} alt={this.state.type}/>
-//                  </React.Fragment>
-//             </React.Fragment>

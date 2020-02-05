@@ -17,13 +17,13 @@ function Header() {
 
 const headerStyle = {
     background: '#333',
-    color: '#fff',
+    color: '#9A80B9',
     textAlign: 'center',
     padding: '10px',
 }
 
 const linkStyle = {
-    color: '#fff',
+    color: '#9A80B9',
     textDecoration: 'none',
     textAlign: 'center'
 }
