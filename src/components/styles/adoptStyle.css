@@ -57,6 +57,10 @@
     border-radius: 4vw;
   }
 
+  .col img{ 
+    border-radius: 50%;
+  }
+
   .col:hover{
     background-color: #696B70;
     cursor: pointer;
