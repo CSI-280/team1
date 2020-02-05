@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/header';
 import Home from './components/pages/home'
 import About from './components/pages/about';
-import RandomPet from './components/pages/randomPet';
+import RandomPet from './components/pages/randomPet.js';
 
 function App() {
   return (
