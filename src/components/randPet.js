@@ -18,10 +18,13 @@ class RandomPet extends React.Component {
             link: "Loading...",
             type: "",
         }
-
-        //call function
-        this.genRand();
+        let display = false;
     }
+
+    handleClick = () => {
+        this.display = true;
+        this.genRand();
+    };
 
     /*get an image from the API*/
     genRand()
@@ -70,18 +73,47 @@ class RandomPet extends React.Component {
 
 
     render() {
+        const disp = this.display;
+        let content;
+        //If display, then show the animal
+        if (disp) {
+            content = 
+            <React.Fragment>
+                <h1>{this.state.name}</h1>
+                <h3>{this.state.type}</h3>
+                <h3>{this.state.gender}</h3>
+                <h3>{this.state.age}</h3>
+                <h3>{this.state.breed}</h3>
+                <img src = {this.state.image} alt={this.state.type}/>
+            </React.Fragment>;
+        }
+
         return (
             <React.Fragment>
-                 <h1>{this.state.type}</h1>
-                 <h3>{this.state.name}</h3>
-                 <h3>{this.state.gender}</h3>
-                 <h3>{this.state.age}</h3>
-                 <h3>{this.state.breed}</h3>
-                 <img src = {this.state.image} alt={this.state.type}/>
+                <button style={buttonStyle} onClick={this.handleClick}>Generate random pet</button>
+                {content}
             </React.Fragment>
-        )
+        );
     }
 }
 
+const buttonStyle = {
+    color: '#8700FF',
+    textAlign: 'center',
+}
 
 export default RandomPet;
+
+
+
+// <React.Fragment>
+//                  <button style={buttonStyle} onClick={this.handleClick}>Generate random pet</button>
+//                  <React.Fragment>
+//                     <h1>{this.state.name}</h1>
+//                     <h3>{this.state.type}</h3>
+//                     <h3>{this.state.gender}</h3>
+//                     <h3>{this.state.age}</h3>
+//                     <h3>{this.state.breed}</h3>
+//                     <img src = {this.state.image} alt={this.state.type}/>
+//                  </React.Fragment>
+//             </React.Fragment>

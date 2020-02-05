@@ -9,8 +9,5 @@ function randomPet() {
     )
 }
 
-const buttonStyle = {
-    color: '#8700FF',
-    textAlign: 'center',
-}
+
 export default randomPet
