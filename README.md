@@ -62,7 +62,9 @@ Use whatever text editor you like.
 phillip edited the readme
 
 Future Features
+
 1. Animal breeder: Pick 2 animals and will try to find an example of said outcome
 2. Animal adopter: It will try and suggest animals to the user that are in need. For example dogs that have been in the shelter for a long time or are about to be put down because no-one wants to adopt it
 3. List off animals of said breeds. It will have a menu of different animals that will go into a menu of breeds.
 4. Scroll mode/front page: it will just show frequently looked at animals on the front page and could refresh every day or week.
+>>>>>>> ed79c327eedf1eb8994a281f367271531054b526

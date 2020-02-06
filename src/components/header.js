@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 function Header() {
     return (
         <header style={headerStyle}>
-            <h1>Pet Finder</h1>
+            <Link style={linkStyle} to="/"><h1>Pet Finder</h1></Link>
             <Link style={linkStyle} to="/">Home</Link>
             <span> | </span>
             <Link style={linkStyle} to="/about">About</Link>
-			
-			<div style={barStyle}>
+            <span> | </span>
+            <Link style={linkStyle} to="/adopt">Adopt</Link>
+            <div style={barStyle}>
 				<form action="/searchresults">
 					<input id="search" style={inputStyle} type="text" placeholder="Type here..."/>
 					<input style={searchButton} type="submit" value="Search" />
