@@ -75,7 +75,6 @@ class RandomPet extends React.Component {
                 })
                 /* get length of photos array */
                 len=resp.data.animals[this.props.index].photos.length;
-
                 /*if length > 1 get img*/
                 if (len > 0)
                 {
@@ -105,7 +104,7 @@ class RandomPet extends React.Component {
 
         return (
             <React.Fragment>
-                <button style={buttonStyle} onClick={this.handleClick} onMouseOver={this.mouseOver} onMouseLeave={this.mouseLeave}>Generate random pet</button>
+                <button style={buttonStyle} onClick={this.handleClick} onMouseOver={this.mouseOver} onMouseLeave={this.mouseLeave}>Generate Random Pet</button>
                 {content}
             </React.Fragment>
         );
@@ -127,13 +126,14 @@ const imgStyle = {
 }
 
 const buttonStyle = {
-    width: '10%',
-    height: 'auto',
     color: '#A9CBD3 ',
     backgroundColor: '#333',
     textAlign: 'center',
     borderRadius: '15px',
     border: 'none',
+    margin: '2%',
+    padding: '.5%',
+    'font-size': '2vw'
 }
 
 export default RandomPet;
