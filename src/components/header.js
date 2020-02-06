@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 function Header() {
     return (
         <header style={headerStyle}>
-            <h1>Pet Finder</h1>
+            <Link style={linkStyle} to="/"><h1>Pet Finder</h1></Link>
             <Link style={linkStyle} to="/">Home</Link>
+            <span> | </span>
+            <Link style={linkStyle} to="/adopt">Adopt</Link>
             <span> | </span>
             <Link style={linkStyle} to="/randomPet">Random Pet</Link>
             <span> | </span>
             <Link style={linkStyle} to="/about">About</Link>
-            
         </header>
     )
 }
