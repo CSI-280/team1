@@ -11,7 +11,7 @@ function Header() {
 			
 			<div style={barStyle}>
 				<form action="/searchresults">
-					<input id="search" style={inputStyle} type="text" placeholder="Type here..." value=""/>
+					<input id="search" style={inputStyle} type="text" placeholder="Type here..."/>
 					<input style={searchButton} type="submit" value="Search" />
 				</form>
 			</div>
