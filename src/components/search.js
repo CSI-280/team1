@@ -20,8 +20,6 @@ class Search extends React.Component {
             breed: "Loading...",
             link: "Loading...",
 		}
-
-		this.handleChange = this.handleChange.bind(this);
 	}
 
 	getInfo() {
@@ -57,17 +55,16 @@ class Search extends React.Component {
 		this.setState({
 			query: event.target.value
 		})
+		this.getInfo();
 	}
 
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.getInfo}>
-					<input type="text" value={this.state.query} onChange={this.handleChange} placeholder="Search here..." />
-					<input type="submit" value="Search"/>
-				</form>
+				<input id="search" type="text" value={this.state.query} onChange={event => this.handleChange(event)} placeholder="Search here..." />
+				<input type="submit" value="Search"/>
 				<div onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
-					<a href={this.state.link} target="_blank" rel="noopener"></a>
+					<a href={this.state.link} target="_blank" rel="noopener noreferrer"></a>
 					<h3>{this.state.name} is adoptable</h3>
 					<img src={this.state.image} alt="Adoptable Dog" width="100" height="100"/>
 					<p>{this.state.age} {this.state.gender} {this.state.breed}</p>
