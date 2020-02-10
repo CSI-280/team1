@@ -2,7 +2,6 @@ import React from 'react';
 import pf from './pf.js';
 import miss from './images/no-Photo.jpg';
 import './styles/adoptStyle.css';
-import { Link } from 'react-router-dom';
 
 //https://dev.to/sage911/how-to-write-a-search-component-with-suggestions-in-react-d20
 // also used a lot of nates adopt page code
@@ -21,17 +20,18 @@ class Search extends React.Component {
             breed: "Loading...",
             link: "Loading...",
 		}
+
+		this.handleChange = this.handleChange.bind(this);
 	}
 
-	getInfo = () => {
+	getInfo() {
 
 		/* declare variables */
 		let len;
 		
-		pf.animal.search({type: this.state.query, status: "adoptable"})
+		pf.animal.search({type: this.state.query})
         .then(resp =>{
 			this.setState({
-				//results: resp.data.animals
 				name: resp.data.animals[this.props.index].name, 
                 gender: resp.data.animals[this.props.index].gender, 
                 age: resp.data.animals[this.props.index].age,
@@ -53,20 +53,20 @@ class Search extends React.Component {
 		})
 	}
 
-	handleInputChange = () => {
+	handleChange(event) {
 		this.setState({
-			query: this.search.value
+			query: event.target.value
 		})
 	}
 
 	render() {
 		return (
 			<div>
-				<form>
-					<input placeholder="Search here..." ref={input => this.search = input}/>
-					<Link onClick={this.handleInputChange} to='/SearchResults'>Search</Link>
+				<form onSubmit={this.getInfo}>
+					<input type="text" value={this.state.query} onChange={this.handleChange} placeholder="Search here..." />
+					<input type="submit" value="Search"/>
 				</form>
-				<div className="col" onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
+				<div onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
 					<a href={this.state.link} target="_blank" rel="noopener"></a>
 					<h3>{this.state.name} is adoptable</h3>
 					<img src={this.state.image} alt="Adoptable Dog" width="100" height="100"/>

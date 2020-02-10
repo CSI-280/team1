@@ -11,6 +11,8 @@ function Header() {
             <span> | </span>
             <Link style={linkStyle} to="/randomPet">Random Pet</Link>
             <span> | </span>
+            <Link style={linkStyle} to="/searchresults">Search</Link>
+            <span> | </span>
             <Link style={linkStyle} to="/about">About</Link>
         </header>
     )
