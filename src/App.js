@@ -5,8 +5,10 @@ import Header from './components/header';
 import Search from './components/search';
 import Home from './components/pages/home';
 import About from './components/pages/about';
+import RandomPet from './components/pages/randomPet.js';
 import Adopt from './components/pages/adopt';
-import SearchResults from './components/pages/searchResults'
+import SearchResults from './components/pages/searchresults'
+
 
 function App() {
   return (
@@ -16,9 +18,10 @@ function App() {
           <Header />
           <Search/>
         <Route exact path = "/" component={Home} />
-        <Route path="/About" component={About} />
         <Route path="/Adopt" component={Adopt} />
         <Route path="/SearchResults" component={SearchResults} />
+        <Route exact path = "/RandomPet" component={RandomPet} />
+        <Route path="/About" component={About} />
         </div>
       </div>
     </Router>
