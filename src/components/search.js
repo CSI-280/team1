@@ -22,6 +22,12 @@ class Search extends React.Component {
 		}
 	}
 
+	handleChange(event) {
+		this.setState({
+			query: event.target.value
+		})
+	}
+
 	getInfo() {
 
 		/* declare variables */
@@ -51,18 +57,11 @@ class Search extends React.Component {
 		})
 	}
 
-	handleChange(event) {
-		this.setState({
-			query: event.target.value
-		})
-		this.getInfo();
-	}
-
 	render() {
 		return (
 			<div>
 				<input id="search" type="text" value={this.state.query} onChange={event => this.handleChange(event)} placeholder="Search here..." />
-				<input type="submit" value="Search"/>
+				<input onClick={this.getInfo()} type="submit" value="Search"/>
 				<div onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
 					<a href={this.state.link} target="_blank" rel="noopener noreferrer"></a>
 					<h3>{this.state.name} is adoptable</h3>
