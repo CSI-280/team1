@@ -6,6 +6,7 @@ import Home from './components/pages/home';
 import About from './components/pages/about';
 import RandomPet from './components/pages/randomPet.js';
 import Adopt from './components/pages/adopt';
+import SearchResults from './components/pages/searchresults'
 
 
 function App() {
@@ -14,10 +15,11 @@ function App() {
       <div className="App">
         <div className="container">
           <Header />
-        <Route exact path = "/" component={Home} />
-        <Route path="/Adopt" component={Adopt} />
-        <Route exact path = "/RandomPet" component={RandomPet} />
-        <Route path="/About" component={About} />
+          <Route exact path = "/" component={Home} />
+          <Route path="/Adopt" component={Adopt} />
+          <Route path="/SearchResults" component={SearchResults} />
+          <Route exact path = "/RandomPet" component={RandomPet} />
+          <Route path="/About" component={About} />
         </div>
       </div>
     </Router>
