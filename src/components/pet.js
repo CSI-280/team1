@@ -2,6 +2,8 @@ import React from 'react';
 import miss from './images/no-Photo.jpg';
 import pf from './pf.js';
 import './styles/adoptStyle.css';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 class Pet extends React.Component {
     
@@ -16,20 +18,36 @@ class Pet extends React.Component {
             age: "Loading...",
             breed: "Loading...",
             link: "Loading...",
+            display: false,
+            type: "",
         }
 
-        //call function
-        this.getImage();
+    }
+    //mouseOver/Leave are for the button
+    mouseOver = (e) => {
+        e.target.style.backgroundColor = '#7D7D7D';
+    }
+    mouseLeave = (e) => {
+        e.target.style.backgroundColor = '#333';
+
+    }
+
+    linkCursor = (e) => {
+        e.target.style.cursor = 'pointer';
     }
 
     /*get an image from the API*/
-    getImage()
+    getPet(aType)
     {
+        this.setState({image: miss,});
+        this.display = true;
+        
+        
+        
         /* declare variables */
         let len;
 
-        /*API Search*/
-        pf.animal.search({type: "dog", status: "adoptable"})
+        pf.animal.search({type: aType, status: "adoptable"})
         .then(resp =>{
 
             /* output photots array to console for testing */
@@ -41,7 +59,8 @@ class Pet extends React.Component {
                 gender: resp.data.animals[this.props.index].gender, 
                 age: resp.data.animals[this.props.index].age,
                 breed: resp.data.animals[this.props.index].breeds.primary,
-                link: resp.data.animals[this.props.index].url
+                link: resp.data.animals[this.props.index].url,
+                type: aType,
             })
 
             /* get length of photos array */
@@ -59,15 +78,68 @@ class Pet extends React.Component {
     };
 
     render() {
+        const disp = this.display;
+        let content;
+        //If display, then show the animal
+        if (disp) {
+            content = 
+            <React.Fragment>
+                <h1 style={nameStyle} onClick={() => window.open(this.state.link)} onMouseOver={this.linkCursor}>{this.state.name}</h1>
+                <h3 style={infoStyle}>{this.state.type} - {this.state.breed}</h3>
+                <h3 style={infoStyle}>{this.state.gender} - {this.state.age}</h3>
+                <img style={imgStyle} src = {this.state.image} alt={this.state.type} onClick={() => window.open(this.state.link)} onMouseOver={this.linkCursor}/>
+            </React.Fragment>;
+        }
+
         return (
-            <div className="col" onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
-                <a href={this.state.link} target="_blank" rel="noopener"></a>
-                <h3>{this.state.name} is adoptable</h3>
-                <img src={this.state.image} alt="Adoptable Dog" width="400" height="500"/>
-                <p>{this.state.age} {this.state.gender} {this.state.breed}</p>
-            </div>
-        )
+            <React.Fragment>
+                <DropdownButton title="Dropdown">
+                    <Dropdown.Item onClick={() =>{this.getPet("Dog")}}>Dog</Dropdown.Item>
+                    <Dropdown.Item onClick={() =>{this.getPet("Cat")}}>Cat</Dropdown.Item>
+                    <Dropdown.Item onClick={() =>{this.getPet("Rabbit")}}>Rabbit</Dropdown.Item>
+                    <Dropdown.Item onClick={() =>{this.getPet("Small & Furry")}}>Small and Furry</Dropdown.Item>
+                    <Dropdown.Item onClick={() =>{this.getPet("Horse")}}>Horse</Dropdown.Item>
+                    <Dropdown.Item onClick={() =>{this.getPet("Bird")}}>Bird</Dropdown.Item>
+                    <Dropdown.Item onClick={() =>{this.getPet("Scales, Fins & Others")}}>Scales, Fins and Others</Dropdown.Item>
+                    <Dropdown.Item onClick={() =>{this.getPet("Barnyard")}}>Barnyard</Dropdown.Item>
+                </DropdownButton>
+                {content}
+            </React.Fragment>
+        );
     }
 }
+const nameStyle = {
+}
+
+const infoStyle = {
+}
+
+
+const imgStyle = {
+    width: '30%',
+    height: "auto",
+    borderRadius: '7%',
+}
+
+const buttonStyle = {
+    color: '#A9CBD3 ',
+    backgroundColor: '#333',
+    textAlign: 'center',
+    borderRadius: '15px',
+    border: 'none',
+    margin: '2%',
+    padding: '.5%',
+    'font-size': '2vw'
+}
+
+{/* <React.Fragment>
+                <DropdownButton title="Dropdown">
+                    <Dropdown.Item href={this.setState("Dog")}>Dog</Dropdown.Item>
+                    <Dropdown.Item> href={this.setState("Cat")}Cat</Dropdown.Item>
+                    <Dropdown.Item>Item 3</Dropdown.Item>
+                </DropdownButton>
+                <h1>Adopt</h1>
+                <Pet index="0" type={this.state.type} />
+            </React.Fragment> */}
 
 export default Pet;

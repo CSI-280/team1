@@ -51,6 +51,7 @@ class RandomPet extends React.Component {
         .then(resp => {
             for(var i=0; i < 8; i++){
                 types[i] = resp.data.types[i].name;
+                console.log(types[i]);
             }
         
             /* declare variables */
