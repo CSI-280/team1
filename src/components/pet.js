@@ -4,6 +4,9 @@ import pf from './pf.js';
 import './styles/adoptStyle.css';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import photo1 from './images/funnyMeme.jpg';
+import photo2 from './images/funnyMeme2.jpg';
+import photo3 from './images/funnyMeme3.jpg';
 
 class Pet extends React.Component {
     
@@ -12,7 +15,9 @@ class Pet extends React.Component {
         super(props);
         this.state = {
             //set defaults
-            image: miss,
+            //array of images used if no image is available for animal
+            images: [photo1, photo2, photo3],
+            image: photo1,
             name: "Loading...", 
             gender: "Loading...", 
             age: "Loading...",
@@ -39,7 +44,6 @@ class Pet extends React.Component {
     /*get an image from the API*/
     getPet(aType)
     {
-        this.setState({image: miss,});
         this.display = true;
         
         
@@ -74,6 +78,9 @@ class Pet extends React.Component {
                     image: resp.data.animals[this.props.index].photos[0].medium
                 })
             }
+            else {
+                this.setState({image: this.state.images[Math.floor(Math.random() * this.state.images.length)],});
+            }
         })
     };
 
@@ -93,27 +100,26 @@ class Pet extends React.Component {
 
         return (
             <React.Fragment>
-                <DropdownButton title="Dropdown">
-                    <Dropdown.Item onClick={() =>{this.getPet("Dog")}}>Dog</Dropdown.Item>
-                    <Dropdown.Item onClick={() =>{this.getPet("Cat")}}>Cat</Dropdown.Item>
-                    <Dropdown.Item onClick={() =>{this.getPet("Rabbit")}}>Rabbit</Dropdown.Item>
-                    <Dropdown.Item onClick={() =>{this.getPet("Small & Furry")}}>Small and Furry</Dropdown.Item>
-                    <Dropdown.Item onClick={() =>{this.getPet("Horse")}}>Horse</Dropdown.Item>
-                    <Dropdown.Item onClick={() =>{this.getPet("Bird")}}>Bird</Dropdown.Item>
-                    <Dropdown.Item onClick={() =>{this.getPet("Scales, Fins & Others")}}>Scales, Fins and Others</Dropdown.Item>
-                    <Dropdown.Item onClick={() =>{this.getPet("Barnyard")}}>Barnyard</Dropdown.Item>
-                </DropdownButton>
+                <button style={buttonStyle} onClick={() =>{this.getPet("Dog")}}>Dog</button>
+                <button style={buttonStyle} onClick={() =>{this.getPet("Cat")}}>Cat</button>
+                <button style={buttonStyle} onClick={() =>{this.getPet("Rabbit")}}>Rabbit</button>
+                <button style={buttonStyle} onClick={() =>{this.getPet("Small & Furry")}}>Small and Furry</button>
+                <button style={buttonStyle} onClick={() =>{this.getPet("Horse")}}>Horse</button>
+                <button style={buttonStyle} onClick={() =>{this.getPet("Bird")}}>Bird</button>
+                <button style={buttonStyle} onClick={() =>{this.getPet("Scales, Fins & Others")}}>Scales, Fins and Others</button>
+                <button style={buttonStyle} onClick={() =>{this.getPet("Barnyard")}}>Barnyard</button>
                 {content}
             </React.Fragment>
         );
     }
 }
 const nameStyle = {
+    margin: '10px',
 }
 
 const infoStyle = {
+    margin: '10px',
 }
-
 
 const imgStyle = {
     width: '30%',
@@ -127,19 +133,9 @@ const buttonStyle = {
     textAlign: 'center',
     borderRadius: '15px',
     border: 'none',
-    margin: '2%',
+    margin: '10px',
     padding: '.5%',
-    'font-size': '2vw'
+    fontSize: '20px'
 }
-
-{/* <React.Fragment>
-                <DropdownButton title="Dropdown">
-                    <Dropdown.Item href={this.setState("Dog")}>Dog</Dropdown.Item>
-                    <Dropdown.Item> href={this.setState("Cat")}Cat</Dropdown.Item>
-                    <Dropdown.Item>Item 3</Dropdown.Item>
-                </DropdownButton>
-                <h1>Adopt</h1>
-                <Pet index="0" type={this.state.type} />
-            </React.Fragment> */}
 
 export default Pet;
