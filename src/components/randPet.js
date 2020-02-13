@@ -51,7 +51,6 @@ class RandomPet extends React.Component {
         .then(resp => {
             for(var i=0; i < 8; i++){
                 types[i] = resp.data.types[i].name;
-                console.log(types[i]);
             }
         
             /* declare variables */
@@ -114,9 +113,11 @@ class RandomPet extends React.Component {
 
 
 const nameStyle = {
+    margin: '10px',
 }
 
 const infoStyle = {
+    margin: '10px',
 }
 
 
@@ -132,9 +133,9 @@ const buttonStyle = {
     textAlign: 'center',
     borderRadius: '15px',
     border: 'none',
-    margin: '2%',
+    margin: '10px',
     padding: '.5%',
-    'font-size': '2vw'
+    fontSize: '20px'
 }
 
 export default RandomPet;
