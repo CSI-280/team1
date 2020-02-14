@@ -47,7 +47,8 @@
   }
 
   .col {
-    float: left;
+    float: none;
+    text-align: center;
     margin-bottom: 2vw;
     margin-left: 2vw;
     background-color: #282c34;
