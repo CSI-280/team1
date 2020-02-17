@@ -22,8 +22,6 @@ class Pet extends React.Component {
             link: "Loading...",
             display: false,
             type: "",
-            id: "",
-            prevId: 1,
         }
 
     }
@@ -46,44 +44,45 @@ class Pet extends React.Component {
         this.genRand();
     };
 
+    setPet (newType) {
+        this.state.type = newType;
+        this.getPet();
+    }
+
     /*get an image from the API*/
-    getPet(aType)
+    getPet()
     {
-        this.display = true;
-        this.setState({prevId: this.state.id, })
-        console.log(this.state.prevId + "and" + this.state.id);
-        
-        
+        this.display = true;        
         
         /* declare variables */
         let len;
 
-            pf.animal.search({type: aType, status: "adoptable"})
+            pf.animal.search({type: this.state.type, status: "adoptable"})
             .then(resp =>{
 
                 /* output photots array to console for testing */
-                console.log(resp.data.animals[this.props.index]);
+                console.log(resp.data.animals);
+                var index = (Math.floor(Math.random() * (0 - resp.data.animals.length + 1) + 0)) * -1;
+                console.log(index);
                 
                 //set variables 
                 this.setState({
-                    name: resp.data.animals[this.props.index].name, 
-                    gender: resp.data.animals[this.props.index].gender, 
-                    age: resp.data.animals[this.props.index].age,
-                    breed: resp.data.animals[this.props.index].breeds.primary,
-                    link: resp.data.animals[this.props.index].url,
-                    type: aType,
-                    id: resp.data.animals[this.props.index].id,
+                    name: resp.data.animals[index].name, 
+                    gender: resp.data.animals[index].gender, 
+                    age: resp.data.animals[index].age,
+                    breed: resp.data.animals[index].breeds.primary,
+                    link: resp.data.animals[index].url,
                 })
 
                 /* get length of photos array */
-                len=resp.data.animals[this.props.index].photos.length;
+                len=resp.data.animals[index].photos.length;
 
                 /*if length > 1 get img*/
                 if (len > 0)
                 {
                     //set image variable
                     this.setState({
-                        image: resp.data.animals[this.props.index].photos[0].medium
+                        image: resp.data.animals[index].photos[0].medium
                     })
                 }
                 else {
@@ -109,14 +108,14 @@ class Pet extends React.Component {
         return (
             <React.Fragment>
                 <div>
-                    <button style={buttonStyle} onClick={() =>{this.getPet("Dog")}}>Dog</button>
-                    <button style={buttonStyle} onClick={() =>{this.getPet("Cat")}}>Cat</button>
-                    <button style={buttonStyle} onClick={() =>{this.getPet("Rabbit")}}>Rabbit</button>
-                    <button style={buttonStyle} onClick={() =>{this.getPet("Small & Furry")}}>Small and Furry</button>
-                    <button style={buttonStyle} onClick={() =>{this.getPet("Horse")}}>Horse</button>
-                    <button style={buttonStyle} onClick={() =>{this.getPet("Bird")}}>Bird</button>
-                    <button style={buttonStyle} onClick={() =>{this.getPet("Scales, Fins & Others")}}>Scales, Fins and Others</button>
-                    <button style={buttonStyle} onClick={() =>{this.getPet("Barnyard")}}>Barnyard</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Dog")}}>Dog</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Cat")}}>Cat</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Rabbit")}}>Rabbit</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Small & Furry")}}>Small and Furry</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Horse")}}>Horse</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Bird")}}>Bird</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Scales, Fins & Others")}}>Scales, Fins and Others</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Barnyard")}}>Barnyard</button>
                 </div>
                 {content}
             </React.Fragment>
@@ -135,10 +134,6 @@ const imgStyle = {
     width: '30%',
     height: "auto",
     borderRadius: '7%',
-}
-
-const fragStyle = {
-    clear: 'both',
 }
 
 const buttonStyle = {

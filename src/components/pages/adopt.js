@@ -5,7 +5,7 @@ import Pet from '../pet.js';
 function Adopt() {
     return (
         <React.Fragment>
-            <Pet index="0"/>
+            <Pet index="0" renderAmount="3"/>
         </React.Fragment>
     )
 }
