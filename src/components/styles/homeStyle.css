@@ -65,11 +65,24 @@
   }
 
   #right{
-    background-color: rgb(158, 160, 165);
+    background-color: #4c5058;
     float: right;
     width: 25%;
+    color: #72d2ecc5;
   }
 
   #left{
-    float: left;
+    margin-top: 2.75%;
+    font-size: 1.3vw;
+    text-align: left;
+    font-family: cardo;
+  }
+  #miss
+  {
+    margin-top: 10%;
+    margin-left: 15px;
+    margin-right: 35%;
+    font-size: 1.3vw;
+    text-align: left;
+    font-family: cardo;
   }
