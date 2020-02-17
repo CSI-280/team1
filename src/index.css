@@ -12,3 +12,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face{
+  font-family: 'Cardo';
+  src: local('Cardo'), url(./components/fonts/Cardo-Regular.ttf) format('truetype');
+}
