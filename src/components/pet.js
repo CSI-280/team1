@@ -1,9 +1,6 @@
 import React from 'react';
-import miss from './images/no-Photo.jpg';
 import pf from './pf.js';
 import './styles/adoptStyle.css';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
 import photo1 from './images/funnyMeme.jpg';
 import photo2 from './images/funnyMeme2.jpg';
 import photo3 from './images/funnyMeme3.jpg';
@@ -30,6 +27,24 @@ class Pet extends React.Component {
         }
 
     }
+    //mouseOver/Leave are for the button
+    mouseOver = (e) => {
+        e.target.style.backgroundColor = '#7D7D7D';
+    }
+    mouseLeave = (e) => {
+        e.target.style.backgroundColor = '#333';
+
+    }
+
+    linkCursor = (e) => {
+        e.target.style.cursor = 'pointer';
+    }
+
+
+    handleClick = () => {
+        this.display = true;
+        this.genRand();
+    };
 
     /*get an image from the API*/
     getPet(aType)
@@ -83,12 +98,12 @@ class Pet extends React.Component {
         //If display, then show the animal
         if (disp) {
             content = 
-                <div className="col" onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
-                    <a href={this.state.link} target="_blank" rel="noopener"></a>
-                    <h3>{this.state.name} is adoptable</h3>
-                    <img src={this.state.image} alt="Adoptable Dog" width="400" height="500"/>
-                    <p>{this.state.age} {this.state.gender} {this.state.breed}</p>
-                </div>
+            <React.Fragment>
+                <h1 style={nameStyle} onClick={() => window.open(this.state.link)} onMouseOver={this.linkCursor}>{this.state.name}</h1>
+                <h3 style={infoStyle}>{this.state.type} - {this.state.breed}</h3>
+                <h3 style={infoStyle}>{this.state.gender} - {this.state.age}</h3>
+                <img style={imgStyle} src = {this.state.image} alt={this.state.type} onClick={() => window.open(this.state.link)} onMouseOver={this.linkCursor}/>
+            </React.Fragment>;
         }
 
         return (
