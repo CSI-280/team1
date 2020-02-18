@@ -1,7 +1,9 @@
 import React from 'react';
-import miss from './images/no-Photo.jpg';
 import pf from './pf.js';
 import './styles/adoptStyle.css';
+import photo1 from './images/funnyMeme.jpg';
+import photo2 from './images/funnyMeme2.jpg';
+import photo3 from './images/funnyMeme3.jpg';
 
 class Pet extends React.Component {
     
@@ -10,64 +12,139 @@ class Pet extends React.Component {
         super(props);
         this.state = {
             //set defaults
-            image: miss,
+            //array of images used if no image is available for animal
+            images: [photo1, photo2, photo3],
+            image: photo1,
             name: "Loading...", 
             gender: "Loading...", 
             age: "Loading...",
             breed: "Loading...",
             link: "Loading...",
+            display: false,
+            type: "",
         }
 
-        //call function
-        this.getImage();
+    }
+    //mouseOver/Leave are for the button
+    mouseOver = (e) => {
+        e.target.style.backgroundColor = '#7D7D7D';
+    }
+    mouseLeave = (e) => {
+        e.target.style.backgroundColor = '#333';
+
+    }
+
+    linkCursor = (e) => {
+        e.target.style.cursor = 'pointer';
+    }
+
+
+    handleClick = () => {
+        this.display = true;
+        this.genRand();
+    };
+
+    setPet (newType) {
+        this.state.type = newType;
+        this.getPet();
     }
 
     /*get an image from the API*/
-    getImage()
+    getPet()
     {
+        this.display = true;        
+        
         /* declare variables */
         let len;
 
-        /*API Search*/
-        pf.animal.search({type: "dog", status: "adoptable"})
-        .then(resp =>{
+            pf.animal.search({type: this.state.type, status: "adoptable"})
+            .then(resp =>{
 
-            /* output photots array to console for testing */
-            console.log(resp.data.animals[this.props.index]);
-            
-            //set variables 
-            this.setState({
-                name: resp.data.animals[this.props.index].name, 
-                gender: resp.data.animals[this.props.index].gender, 
-                age: resp.data.animals[this.props.index].age,
-                breed: resp.data.animals[this.props.index].breeds.primary,
-                link: resp.data.animals[this.props.index].url
-            })
-
-            /* get length of photos array */
-            len=resp.data.animals[this.props.index].photos.length;
-
-            /*if length > 1 get img*/
-            if (len > 0)
-            {
-                //set image variable
+                /* output photots array to console for testing */
+                console.log(resp.data.animals);
+                // generating random index based on length of resp.data.animals
+                var index = (Math.floor(Math.random() * (0 - resp.data.animals.length + 1) + 0)) * -1;
+                
+                //set variables 
                 this.setState({
-                    image: resp.data.animals[this.props.index].photos[0].medium
+                    name: resp.data.animals[index].name, 
+                    gender: resp.data.animals[index].gender, 
+                    age: resp.data.animals[index].age,
+                    breed: resp.data.animals[index].breeds.primary,
+                    link: resp.data.animals[index].url,
                 })
-            }
-        })
+
+                /* get length of photos array */
+                len=resp.data.animals[index].photos.length;
+
+                /*if length > 1 get img*/
+                if (len > 0)
+                {
+                    //set image variable
+                    this.setState({
+                        image: resp.data.animals[index].photos[0].medium
+                    })
+                }
+                else {
+                    this.setState({image: this.state.images[Math.floor(Math.random() * this.state.images.length)],});
+                }
+            })
     };
 
     render() {
-        return (
+        const disp = this.display;
+        let content;
+        //If display, then show the animal
+        if (disp) {
+            content = 
             <div className="col" onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
                 <a href={this.state.link} target="_blank" rel="noopener"></a>
                 <h3>{this.state.name} is adoptable</h3>
                 <img src={this.state.image} alt="Adoptable Dog" width="400" height="500"/>
                 <p>{this.state.age} {this.state.gender} {this.state.breed}</p>
             </div>
-        )
+        }
+
+        return (
+            <React.Fragment>
+                <div>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Dog")}}>Dog</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Cat")}}>Cat</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Rabbit")}}>Rabbit</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Small & Furry")}}>Small and Furry</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Horse")}}>Horse</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Bird")}}>Bird</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Scales, Fins & Other")}}>Scales, Fins and Others</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Barnyard")}}>Barnyard</button>
+                </div>
+                {content}
+            </React.Fragment>
+        );
     }
+}
+const nameStyle = {
+    margin: '10px',
+}
+
+const infoStyle = {
+    margin: '10px',
+}
+
+const imgStyle = {
+    width: '30%',
+    height: "auto",
+    borderRadius: '7%',
+}
+
+const buttonStyle = {
+    color: '#A9CBD3 ',
+    backgroundColor: '#333',
+    textAlign: 'center',
+    borderRadius: '15px',
+    border: 'none',
+    margin: '10px',
+    padding: '.5%',
+    fontSize: '20px'
 }
 
 export default Pet;
