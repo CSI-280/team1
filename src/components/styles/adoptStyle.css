@@ -47,19 +47,20 @@
   }
 
   .col {
-    float: none;
+    display: inline-block;
     text-align: center;
-    margin-bottom: 2vw;
-    margin-left: 2vw;
+    margin: 2vw;
     background-color: #282c34;
     padding-left: 2%;
     padding-right: 2%;
     color: white;
     border-radius: 4vw;
+    width: 50%;
+    height: auto;
   }
 
   .col img{ 
-    border-radius: 50%;
+    border-radius: 15%;
   }
 
   .col:hover{

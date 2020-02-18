@@ -62,8 +62,8 @@ class Pet extends React.Component {
 
                 /* output photots array to console for testing */
                 console.log(resp.data.animals);
+                // generating random index based on length of resp.data.animals
                 var index = (Math.floor(Math.random() * (0 - resp.data.animals.length + 1) + 0)) * -1;
-                console.log(index);
                 
                 //set variables 
                 this.setState({
@@ -97,12 +97,12 @@ class Pet extends React.Component {
         //If display, then show the animal
         if (disp) {
             content = 
-            <React.Fragment>
-                <h1 style={nameStyle} onClick={() => window.open(this.state.link)} onMouseOver={this.linkCursor}>{this.state.name}</h1>
-                <h3 style={infoStyle}>{this.state.type} - {this.state.breed}</h3>
-                <h3 style={infoStyle}>{this.state.gender} - {this.state.age}</h3>
-                <img style={imgStyle} src = {this.state.image} alt={this.state.type} onClick={() => window.open(this.state.link)} onMouseOver={this.linkCursor}/>
-            </React.Fragment>;
+            <div className="col" onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
+                <a href={this.state.link} target="_blank" rel="noopener"></a>
+                <h3>{this.state.name} is adoptable</h3>
+                <img src={this.state.image} alt="Adoptable Dog" width="400" height="500"/>
+                <p>{this.state.age} {this.state.gender} {this.state.breed}</p>
+            </div>
         }
 
         return (
@@ -114,7 +114,7 @@ class Pet extends React.Component {
                     <button style={buttonStyle} onClick={() =>{this.setPet("Small & Furry")}}>Small and Furry</button>
                     <button style={buttonStyle} onClick={() =>{this.setPet("Horse")}}>Horse</button>
                     <button style={buttonStyle} onClick={() =>{this.setPet("Bird")}}>Bird</button>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Scales, Fins & Others")}}>Scales, Fins and Others</button>
+                    <button style={buttonStyle} onClick={() =>{this.setPet("Scales, Fins & Other")}}>Scales, Fins and Others</button>
                     <button style={buttonStyle} onClick={() =>{this.setPet("Barnyard")}}>Barnyard</button>
                 </div>
                 {content}
