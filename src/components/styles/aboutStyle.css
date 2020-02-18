@@ -1,0 +1,26 @@
+.general {
+    background-color: #282c34;
+    border-radius: 2vw;
+    width: 30%;
+    position: relative;
+    color: white;
+    text-align: left;
+
+}
+
+.image {
+    width: 30%;
+    padding: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+a {
+    color: lightblue;
+}
+
+tr {
+    width: 100%;
+}
