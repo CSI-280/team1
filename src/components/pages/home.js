@@ -9,7 +9,7 @@ function Home() {
     return (
         <container>
             <div id="right">
-                <h3>Aviable Dogs</h3>
+                <h3>Aviable Pets</h3>
                 <Pet index="0"/>
                 <Pet index="1"/>
             </div>
