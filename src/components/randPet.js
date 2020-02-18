@@ -60,27 +60,31 @@ class RandomPet extends React.Component {
                 var type = types[Math.floor(Math.random() * types.length)];                
             } while(type === this.state.prevType);
 
+
+
+           
             /*API Search*/
             pf.animal.search({type: type})
-            .then(resp =>{                
+            .then(resp =>{  
+                var index = (Math.floor(Math.random() * (0 - resp.data.animals.length + 1) + 0)) * -1;              
                 //set variables 
                 this.setState({
-                    name: resp.data.animals[this.props.index].name, 
-                    gender: resp.data.animals[this.props.index].gender, 
-                    age: resp.data.animals[this.props.index].age,
-                    breed: resp.data.animals[this.props.index].breeds.primary,
-                    link: resp.data.animals[this.props.index].url,
-                    type: resp.data.animals[this.props.index].type,
-                    prevType: resp.data.animals[this.props.index].type,
+                    name: resp.data.animals[index].name, 
+                    gender: resp.data.animals[index].gender, 
+                    age: resp.data.animals[index].age,
+                    breed: resp.data.animals[index].breeds.primary,
+                    link: resp.data.animals[index].url,
+                    type: resp.data.animals[index].type,
+                    prevType: resp.data.animals[index].type,
                 })
                 /* get length of photos array */
-                len=resp.data.animals[this.props.index].photos.length;
+                len=resp.data.animals[index].photos.length;
                 /*if length > 1 get img*/
                 if (len > 0)
                 {
                     //set image variable
                     this.setState({
-                        image: resp.data.animals[this.props.index].photos[0].medium
+                        image: resp.data.animals[index].photos[0].medium
                     })
                 }
             })

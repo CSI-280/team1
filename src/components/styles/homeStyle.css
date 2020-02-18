@@ -50,12 +50,13 @@
     background-color: #282c34;
     color: white;
     border-radius: 4vw;
+    width: 75%;
   }
 
   .col img{ 
-    border-radius: 50%;
-    width: 300px;
-    height: 400px;
+    border-radius: 15%;
+    width: 50%;
+    height: auto;
   }
 
   .col:hover{
@@ -68,7 +69,7 @@
     background-color: #4c5058;
     float: right;
     width: 25%;
-    color: #72d2ecc5;
+    color: #A9CBD3;
   }
 
   #left{

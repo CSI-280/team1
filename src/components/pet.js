@@ -100,7 +100,7 @@ class Pet extends React.Component {
             <div className="col" onClick={() => window.open(this.state.link)} onMouseOver={() => this.style="background-color: #292c34;"}>
                 <a href={this.state.link} target="_blank" rel="noopener"></a>
                 <h3>{this.state.name} is adoptable</h3>
-                <img src={this.state.image} alt="Adoptable Dog" width="400" height="500"/>
+                <img src={this.state.image} alt="Adoptable Dog" />
                 <p>{this.state.age} {this.state.gender} {this.state.breed}</p>
             </div>
         }
