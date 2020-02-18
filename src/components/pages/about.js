@@ -8,9 +8,13 @@ function About() {
         <React.Fragment>
                 <h1>About</h1>
                 <table>
+                    <tr class="header">
+                        <th>Developers</th>
+                        <th>Goal</th>
+                        <th>Resources</th>
+                    </tr>
                     <tr>
                         <td class="general">
-                            <h2>Developers</h2>
                             <ul>
                                 <li>Michael Bamford</li>
                                 <li>Nate DiMauro</li>
@@ -20,11 +24,9 @@ function About() {
                             <p>We are all from Champlain College in the class Innovation II: Open Source Software Dev. The teacher is Chris Bendel.</p>
                         </td>
                         <td class="general">
-                            <h2>Goal</h2>
-                            <p>The goal of the project is to simualate a real world develpment team.</p>
+                            <p>The goal of the project is to simulate a real world develpment team.</p>
                         </td>
                         <td class="general">
-                            <h2>Resources</h2>
                             <p>This site uses the <a href="https://www.petfinder.com/developers/v2/docs/">Petfinder API</a> and <a href="https://reactjs.org/">React Framework</a>.</p>
                         </td>
                     </tr>

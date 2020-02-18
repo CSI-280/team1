@@ -13,8 +13,9 @@
     padding: 50px;
 }
 
-h2 {
+th {
     text-align: center;
+    font-size: 30px;
 }
 
 a {
