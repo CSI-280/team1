@@ -14,6 +14,8 @@ function Header() {
             <Link style={linkStyle} to="/searchresults">Search</Link>
             <span> | </span>
             <Link style={linkStyle} to="/about">About</Link>
+			<span> | </span>
+			<Link style={linkStyle} to="/signin">Sign In</Link>
         </header>
     )
 }
