@@ -9,9 +9,9 @@ function Home() {
     return (
         <container>
             <div id="right">
-                <h3>Available Pets</h3>
-                <Pet index="0"/>
-                <Pet index="1"/>
+                <h3>Available Dogs</h3>
+                <Pet index="0" button="false" typePassed="dog"/>
+                <Pet index="1" button="false" typePassed="dog"/>
             </div>
             <div>
                 <img style={dogStyle} src={dog} alt="this is a dog" wdith="250" height="300"/>
