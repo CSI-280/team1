@@ -21,9 +21,12 @@ class Pet extends React.Component {
             breed: "Loading...",
             link: "Loading...",
             display: false,
-            type: "",
+            type: ""
         }
-
+        console.log("in contructor");
+        if (this.props.button === "false") {
+            this.setPet(this.props.typePassed);
+        }
     }
     //mouseOver/Leave are for the button
     mouseOver = (e) => {
@@ -93,7 +96,9 @@ class Pet extends React.Component {
 
     render() {
         const disp = this.display;
+        const dispButton = this.props.button;
         let content;
+        let buttons;
         //If display, then show the animal
         if (disp) {
             content = 
@@ -104,19 +109,23 @@ class Pet extends React.Component {
                 <p>{this.state.age} {this.state.gender} {this.state.breed}</p>
             </div>
         }
+        if (dispButton === "true") {
+            buttons =
+            <div>
+                <button style={buttonStyle} onClick={() =>{this.setPet("Dog")}}>Dog</button>
+                <button style={buttonStyle} onClick={() =>{this.setPet("Cat")}}>Cat</button>
+                <button style={buttonStyle} onClick={() =>{this.setPet("Rabbit")}}>Rabbit</button>
+                <button style={buttonStyle} onClick={() =>{this.setPet("Small & Furry")}}>Small and Furry</button>
+                <button style={buttonStyle} onClick={() =>{this.setPet("Horse")}}>Horse</button>
+                <button style={buttonStyle} onClick={() =>{this.setPet("Bird")}}>Bird</button>
+                <button style={buttonStyle} onClick={() =>{this.setPet("Scales, Fins & Other")}}>Scales, Fins and Others</button>
+                <button style={buttonStyle} onClick={() =>{this.setPet("Barnyard")}}>Barnyard</button>
+            </div>
+        }
 
         return (
             <React.Fragment>
-                <div>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Dog")}}>Dog</button>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Cat")}}>Cat</button>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Rabbit")}}>Rabbit</button>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Small & Furry")}}>Small and Furry</button>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Horse")}}>Horse</button>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Bird")}}>Bird</button>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Scales, Fins & Other")}}>Scales, Fins and Others</button>
-                    <button style={buttonStyle} onClick={() =>{this.setPet("Barnyard")}}>Barnyard</button>
-                </div>
+                {buttons}
                 {content}
             </React.Fragment>
         );
